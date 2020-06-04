@@ -1,4 +1,8 @@
 class PostsController < ApplicationController
+    #TODO:
+    #1.show current user's posts
+    #2.show current user's area's posts
+    
     def index
         render json: Post.all 
     end
