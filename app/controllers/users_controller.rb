@@ -23,11 +23,9 @@ class UsersController < ApplicationController
         user = User.find_by(name: user_params[:name])
         if user && user.authenticate(user_params[:password])
             # encode token comes from ApplicationController
-            puts "AUTHENTICATED"
             token = encode_token({ user_id: user.id })
             render json: { id: user.id, name: user.name, zipcode: user.zipcode, jwt: token }, status: :accepted
         else
-            puts "NOT AUTHENTICATED"
             render json: { message: 'Invalid username or password' }, status: :unauthorized
         end
     end

@@ -15,4 +15,9 @@ Rails.application.routes.draw do
   post '/users/register', to: "users#register"
   post '/users/logout', to: "users#logout"
 
+  #########################################################
+  # posts 
+  get '/user_posts', to: 'posts#user_posts' #get current user's posts
+  get '/local_posts/:zipcode', to: 'posts#local_posts' #get local posts based on user's zipcode
+
 end

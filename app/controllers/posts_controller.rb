@@ -28,6 +28,22 @@ class PostsController < ApplicationController
         post.destroy
     end
 
+    def user_posts 
+        posts = []
+        if current_user then
+            current_user.posts.map do |post|
+                posts << post.detailed_post
+            end
+        end
+        render json: posts
+    end
+
+    def local_posts
+        zip = params[:zipcode]
+        local_posts = Post.local_posts(zip)
+        render json: local_posts
+    end
+
     private
     def post_params
         params.require(:post).permit!
