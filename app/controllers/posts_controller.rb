@@ -9,6 +9,7 @@ class PostsController < ApplicationController
 
     def show
         post = Post.find(params[:id])
+        post = post.detailed_post
         render json: post, except: [:created_at, :updated_at]
     end
 
@@ -46,6 +47,7 @@ class PostsController < ApplicationController
 
     private
     def post_params
-        params.require(:post).permit!
+        # params.require(:post).permit!
+        params.permit!
     end
 end

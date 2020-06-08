@@ -12,7 +12,8 @@ class Post < ApplicationRecord
         post.merge!({:user => self.user})
         post.merge!({:area => self.area})
         post.merge!({:category => self.category})
-        post.merge!({:comments => self.comments})
+        # post.merge!({:comments => self.comments})
+        post.merge!({:comments => self.detail_comment})
         post.merge!({:images => self.images})
         post
     end
@@ -25,6 +26,20 @@ class Post < ApplicationRecord
         end
         posts
     end
+
+    def detail_comment 
+        comments = []
+        self.comments.map do |comment|
+            details = {}
+            user = User.find(comment['user_id'])
+            details = {:comment => comment}
+            details.merge!({:user => user})
+            comments << details
+        end
+        comments
+    end
+
+
 
 end
 
