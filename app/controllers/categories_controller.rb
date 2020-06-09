@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
     def index
-        render json: Category.all 
+        render json: Category.all, except: [:created_at, :updated_at]
     end
 
     def show

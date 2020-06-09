@@ -10,18 +10,18 @@ class PostsController < ApplicationController
     def show
         post = Post.find(params[:id])
         post = post.detailed_post
-        render json: post, except: [:created_at, :updated_at]
+        render json: post
     end
 
     def create 
         post = Post.create(post_params)
-        render json: post, except: [:created_at, :updated_at]
+        render json: post
     end
 
     def update 
         post = Post.find(params[:id])
         post.update(post_params)
-        render json: post, except: [:created_at, :updated_at]
+        render json: post
     end
 
     def destroy
@@ -47,7 +47,7 @@ class PostsController < ApplicationController
 
     private
     def post_params
-        # params.require(:post).permit!
-        params.permit!
+        params.require(:post).permit!
+        # params.permit!
     end
 end
