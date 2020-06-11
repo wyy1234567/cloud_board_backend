@@ -6,7 +6,8 @@ class UsersController < ApplicationController
     #logout
 
     def index
-        render json: User.all, except: [:created_at, :updated_at]
+        # render json: User.all, except: [:created_at, :updated_at]
+        render json: Area.all, except: [:created_at, :updated_at]
     end
 
     def register 
@@ -36,6 +37,7 @@ class UsersController < ApplicationController
     def ping
         render json: {success: true}
     end
+
 
     private
     def user_params 

@@ -27,6 +27,7 @@ event = Category.create(name: 'event')
 
 wny = Area.create(zipcode: '07093', name: 'West New York')
 lic = Area.create(zipcode: '10010', name: 'Stuyvesant Park')
+union_city = Area.create(zipcode: '07087', name: 'Union City')
 
 post1 = Post.create(title: 'sell switch', description: 'i want to sell my switch!', user: wyy, area: wny, category: marketplace)
 post2 = Post.create(title: 'teach python', description: 'i am professor python', user: leo, area: wny, category: education)
